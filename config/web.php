@@ -98,16 +98,13 @@ $config = [
                 md5('site_index') => 'site/index',
 
                 //productController
-              
                 md5('membre_liste') => 'membre/membre',
+                md5('membre_profil').'/<code:\w+>' => 'membre/profil',
 
 
-                md5('produit_groupe') => 'produit/groupe',
-                md5('produit_reference') => 'produit/reference',
+               
                 md5('produit_banner') => 'produit/banner',
-                md5('produit_product') => 'produit/product',
-                md5('produit_productadd') => 'produit/productadd',
-                md5('produit_productupdate') . '/<code:\w+>' => 'produit/productupdate',
+               
 
                 //clientcontroller
                 md5('client_client') => 'client/client',
