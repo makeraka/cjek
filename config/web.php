@@ -23,9 +23,13 @@ $config = [
             'class' => 'app\components\productClass', //class pour les produits
         ],
 
+        'activiteClass' => [
+            'class' => 'app\components\activiteClass', //class pour les produits
+        ],
+
         
         'membreClass' => [
-            'class' => 'app\components\membreClass', //class pour les produits
+            'class' => 'app\components\membreClass', //class pour les membres
         ],
 
         'nonSqlClass' => [
@@ -97,9 +101,14 @@ $config = [
                 // siteController
                 md5('site_index') => 'site/index',
 
-                //productController
+                //membreController
                 md5('membre_liste') => 'membre/membre',
                 md5('membre_profil').'/<code:\w+>' => 'membre/profil',
+
+                // activiteController
+                md5('activite_liste') => 'activite/activite',
+
+
 
 
                

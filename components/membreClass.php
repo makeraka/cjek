@@ -9,6 +9,22 @@ use yii\base\InvalidConfigException;
 
 class membreClass extends component
 {
+
+ // fonction de ajouter membres
+ public function addActivites ($code, $nom, $dateac,$lieu,$description,$photo)
+ {
+     try {
+         $query = $this->connect->createCommand("INSERT INTO activites(code, nom, dateac,lieu,description,photo)
+         VALUES (:code,:nom,:dateac,:lieu, :description, :photo)")
+      ->bindValues([':code' => $code, ':nom' => $nom, ':dateact' => $dateac, ':lieu' => $lieu, ':description' => $description, ':photo' => $photo])
+      ->execute();
+
+     } catch (\Throwable $th) {
+         die($th->getMessage());
+     }
+
+ }
+
     public $connect = Null;
 
     public function __construct()

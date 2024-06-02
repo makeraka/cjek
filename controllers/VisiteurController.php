@@ -29,11 +29,11 @@ class VisiteurController extends Controller
 
 
 
-      case md5(strtolower('uniciteGrp')):
+      case md5(strtolower('uniciteActivite')):
+      
+        $nom = $_POST['nom'];
 
-        $productGroupName = $_POST['productGrpNames'];
-
-        $verifieUniciter = Yii::$app->mainClass->unicite('icopub.groupe', $productGroupName, 'libelle');
+        $verifieUniciter = Yii::$app->mainClass->unicite('activites', $nom, 'nom');
         return $verifieUniciter;
         break;
 
