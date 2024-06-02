@@ -1,4 +1,5 @@
 <?php
+
 namespace app\components;
 
 use Yii;
@@ -17,14 +18,13 @@ class activiteClass extends Component
 
 
 
-    public function addActivites($code, $nom, $dateac,$lieu,$description,$photo)
+    public function addActivites($code, $nom, $dateac, $lieu, $description, $photo)
     {
         try {
             $query = $this->connect->createCommand("INSERT INTO activites(code, nom, dateac,lieu,description,photo)
             VALUES (:code,:nom,:dateac,:lieu, :description, :photo)")
-         ->bindValues([':code' => $code, ':nom' => $nom, ':dateac' => $dateac, ':lieu' => $lieu, ':description' => $description, ':photo' => $photo])
-         ->execute();
-   
+                ->bindValues([':code' => $code, ':nom' => $nom, ':dateac' => $dateac, ':lieu' => $lieu, ':description' => $description, ':photo' => $photo])
+                ->execute();
         } catch (\Throwable $th) {
             die($th->getMessage());
         }
@@ -32,17 +32,29 @@ class activiteClass extends Component
 
 
     // ******************* requette de select des membres ******************************************
-   
+
     public function listeActivites()
     {
         try {
-        $req = $this->connect->createCommand('SELECT * FROM activites WHERE  statut=1 ORDER BY id DESC')
-        ->queryAll();
-        return $req;
+            $req = $this->connect->createCommand('SELECT * FROM activites WHERE  statut=1 ORDER BY id DESC')
+                ->queryAll();
+            return $req;
         } catch (\Throwable $th) {
-        return $th->getMessage();
+            return $th->getMessage();
         }
-    
     }
 
+    // ******************************* liste de activite en fonction de id ****************************
+
+    public function getActivite($id)
+    {
+        try {
+            $req = $this->connect->createCommand('SELECT * FROM activites WHERE activites.code =:id')
+                ->bindValue(':id', $id)
+                ->queryAll();
+            return $req;
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
 }

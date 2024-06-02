@@ -107,6 +107,7 @@ $config = [
 
                 // activiteController
                 md5('activite_liste') => 'activite/activite',
+                md5('activite_ajax') => 'activite/ajax',
 
 
 
